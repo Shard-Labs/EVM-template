@@ -1,0 +1,13 @@
+FROM ghcr.io/crytic/echidna/echidna
+
+WORKDIR /project
+
+COPY . .
+
+RUN chown -Rh $user:$user .
+
+USER $user
+
+RUN /project/analyzers/base.sh
+
+ENTRYPOINT [ "/bin/bash", "-l", "-c", "./analyzers/echindna.sh" ]

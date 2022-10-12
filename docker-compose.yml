@@ -1,0 +1,17 @@
+version: '3.0'
+services:
+  slither:
+    build:
+      context: .
+      dockerfile: analyzers/Dockerfile-slither
+    env_file:
+      - .env
+
+  echindna:
+    build:
+      context: .
+      dockerfile: analyzers/Dockerfile-echindna
+    env_file:
+      - .env
+      
+

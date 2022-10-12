@@ -1,0 +1,13 @@
+FROM trailofbits/eth-security-toolbox
+
+WORKDIR /project
+
+COPY . .
+
+RUN chown -Rh $user:$user .
+
+USER $user
+
+RUN /project/analyzers/base.sh
+
+ENTRYPOINT [ "/bin/bash", "-l", "-c", "/project/analyzers/slither.sh" ]
